@@ -1,0 +1,64 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Aug 20 23:31:00 2019
+
+@author: Wanderson Silva
+"""
+
+#Criar um programa para calcular:
+#01 - Corrente "A";
+#02 - Potência Ativa;
+#03 - Potência Reativa;
+#04 - Potência Aparente;
+#05 - Anguo do fator de Potência;
+
+#Especificação do Motor:
+#Tensão V = 380/220;
+#Potência CV - 4 (Saída) eixo do motor;
+#Fator de Potência fp = 93%
+#Redimento = 98%
+
+#Cálculo da corrente:
+#A = Corrente Elétrica
+#V = Tensão Elétrica
+
+def main():
+    
+    v = float(input("Insira a Tensão:"))
+    print("O valor da Tensão é", v,"v")
+    
+    n = float(input("Insira o Rendimento:"))
+    ncorrigido = (n/100)
+    print ("O valor do Rendimento é", ncorrigido,"%")
+    
+    fp = float(input("Insira o Fator de Potencia:"))
+    fpcorrigido = (fp/100)
+    print("O fator de Potência é ", fpcorrigido,"%")
+    
+    p = float(input("Insira a Potência de Saída em Cv:"))
+    pw = p*736
+    print("O Valor da Potência em Watts é:", pw,"W")
+    
+    i = 0.0
+    k=736 #Constante de conversão de CV pra Watts
+    
+    import math
+    x = math.sqrt(3)# Raiz de 3
+
+    
+    i = ((pw)/(x*v*ncorrigido*fpcorrigido)) #calculo da Corrente Eletrica
+    print("O valor da Corrente do Motor é:", i,"A")
+    
+    
+    pe = p/ncorrigido #Potencia de entrada do Motor
+    print("A Potência de Entrada do Motor é", pe, "w")
+    
+    
+    pa = pe/fpcorrigido #Potencia aparente do Motor
+    print("O Valor da Potência Aparente do Motor é:", pa, "w")
+    
+    
+    
+    
+    
+main()
